@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Energy Infrastructure - Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF9800;
+            --secondary-orange: #FFA726;
+            --dark-gray: #333;
+            --medium-gray: #555;
+            --light-gray: #f5f5f5;
+            --text-color: #333;
+            --white: #fff;
+            --blue: #1976D2;
+            --green: #4CAF50;
+            --dark-blue-gray: #2c3e50;
+            --header-border: #eee;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--header-border);
+            background-color: var(--white);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-orange);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-orange);
+        }
+
+        /* Services Hero Section */
+        .services-hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 60px 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: var(--light-gray);
+            clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .services-hero-left, .services-hero-right {
+            flex: 1;
+            min-width: 300px;
+            z-index: 1;
+        }
+
+        .services-hero-left {
+            padding-right: 40px;
+            position: relative;
+            color: var(--dark-gray);
+            text-align: center;
+        }
+
+        .services-hero-left h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        .services-hero-left .star {
+            position: absolute;
+            font-size: 2em;
+            color: #FFD700; /* Gold */
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+
+        .services-hero-left .star.top-left {
+            top: 10%;
+            left: 15%;
+        }
+
+        .services-hero-left .circle {
+            position: absolute;
+            background-color: rgba(255, 152, 0, 0.3);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .services-hero-left .circle.top {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 0;
+        }
+
+        .services-hero-right {
+            text-align: center;
+            position: relative;
+        }
+
+        .services-hero-right img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-hero-right .orange-circle-right {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            opacity: 0.7;
+            top: 80%;
+            right: 5%;
+            z-index: 1;
+        }
+
+        /* Service Cards Section (EPC, O&M, FUNDING) */
+        .service-cards-section {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .service-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-card-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+            padding: 30px;
+            background-color: var(--dark-blue-gray);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            color: var(--white);
+        }
+
+        .service-card-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: var(--primary-orange);
+            text-align: center;
+        }
+
+        .service-card-item p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Liaising Section */
+        .liaising-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .liaising-section .orange-circle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            opacity: 0.7;
+            top: 5%;
+            left: 10%;
+            z-index: 1;
+        }
+
+        .liaising-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+
+        .liaising-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+
+        .liaising-content p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+
+        .liaising-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .liaising-content ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            line-height: 1.6;
+            color: var(--medium-gray);
+        }
+
+        .liaising-content ul li::before {
+            content: '\2022'; /* Bullet point */
+            color: var(--primary-orange);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Footer (reused from previous design, slightly adapted) */
+        footer {
+            background-color: var(--dark-blue-gray);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 15px;
+        }
+
+        .footer-logo-section img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-section p {
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-logo-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: var(--primary-orange);
+        }
+
+        .footer-logo-section address {
+            font-style: normal;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3, .footer-call h3, .footer-email h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-contact p, .footer-call p, .footer-email p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact address, .footer-call p, .footer-email p {
+             font-style: normal;
+        }
+
+        .footer-form h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-form h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-form input[type="text"],
+        .footer-form input[type="email"],
+        .footer-form input[type="subject"],
+        .footer-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3f5b73; /* Slightly lighter dark blue-gray */
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-form input::placeholder,
+        .footer-form textarea::placeholder {
+            color: #a0a8b4;
+        }
+
+        .footer-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .footer-form button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-form button:hover {
+            background-color: var(--secondary-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #4a627a;
+            color: #a0a8b4;
+            font-size: 0.85em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0;
+            }
+
+            .services-hero::before {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 100%);
+            }
+
+            .services-hero-left {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .services-hero-left h1 {
+                font-size: 2.5em;
+            }
+
+            .services-hero-right img {
+                max-width: 80%;
+            }
+            .services-hero-right .orange-circle-right {
+                right: 50%;
+                transform: translateX(50%);
+                top: auto;
+                bottom: 10%;
+            }
+
+            .service-cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-card-item {
+                max-width: 90%;
+            }
+
+            .liaising-section {
+                padding: 40px 0;
+            }
+            .liaising-content {
+                padding: 0 15px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+                padding: 0;
+            }
+
+            .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after, .footer-form h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Hide navigation for small screens */
+            }
+
+            header {
+                justify-content: center;
+            }
+
+            .services-hero-left h1 {
+                font-size: 2em;
+            }
+
+            .service-card-item h3 {
+                font-size: 1.2em;
+            }
+            .service-card-item p {
+                font-size: 0.9em;
+            }
+
+            .liaising-content h2 {
+                font-size: 1.8em;
+            }
+            .liaising-content p, .liaising-content ul li {
+                font-size: 0.95em;
+            }
+        }
+        html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+
+    <script src="script.js" ></script>
+    <script>
+        function showAlert() {
+        alert("Thank you! Your message has been sent successfully.");
+        return true; // allow form submission
+        }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    (function(){
+        if (window.emailjs && typeof emailjs.init === 'function') {
+            emailjs.init('HgYTSXwCZSRLWZrOR');
+        }
+    })();
+</script>
+
+</head>
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="./home_page/LOGO.png" alt="AR Energy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="About-us.html">About Us</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="#" class="active">Services</a></li>
+                <li><a href="Clients.html">Clients</a></li>
+                <li><a href="index.html#partners">Partners</a></li>
+                <li><a href="Contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; position: relative; z-index: 1;">
+                <div class="services-hero-left">
+                    <span class="star top-left">&#9733;</span>
+                    <div class="circle top"></div>
+                    <h1>Services</h1>
+                </div>
+                <div class="services-hero-right">
+                    <img src="./service/ssds.jpg" alt="Solar Energy Service">
+                    <div class="orange-circle-right"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-cards-section">
+            <div class="container service-cards-container">
+                <div class="service-card-item">
+                    <h3>EPC CONSULTING</h3>
+                    <p>EPC is Engineering, Procurement, and Construction. In LED industry, this term is used for designing and installing LED devices from designing the system, procuring the components and installing the project.</p>
+                </div>
+                <div class="service-card-item">
+                    <h3>O & M</h3>
+                    <p>O&M has become a standalone segment within the LED industry. O&M is for proper and periodic Operation and Maintenance. Thus, at AREI we take care of projects from Operation to Maintenance.</p>
+                </div>
+                <div class="service-card-item">
+                    <h3>FUNDING</h3>
+                    <p>To support solar energy projects, Funding is a key requirement. We have, Funding tie-ups to help our support solar power projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="liaising-section">
+            <div class="container">
+                <div class="orange-circle"></div>
+                <div class="liaising-content">
+                    <h2>LIASIONING</h2>
+                    <p>Approvals and Liasoning is the initial phase in any Solar Power project. It requires the following (depending on the size of work):</p>
+                    <ul>
+                        <li>Project registration at MNRE (Ministry of Non-Renewable Energy) nodal agency</li>
+                        <li>LOA (Lease Term/Open Agreement) related works</li>
+                        <li>Plant commissioning certificate</li>
+                        <li>PPA (power purchase agreement) with private/government</li>
+                        <li>Land related paperwork</li>
+                        <li>REC (Renewable Energy Certificate) related SLDC Registration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo-section">
+                <img src="./home_page/LOGO.png" alt="AR Energy Infrastructure Logo">
+                <p>"Ready to move from ambition to action? Join us in transforming how we live. Let's not just light up streets, we illuminate entire communities."</p>
+                <h4>Branch Office-1</h4>
+                <address>
+                    6-44-1, Laxmi nagar,<br>
+                    Anantapur AP-515001
+                </address>
+                <br>
+                <h4>Branch Office-2</h4>
+                <address>
+                    23-453, Near TO RTC BUS STAND Sai<br>
+                    Nagar Dharmavaram-515671
+                </address>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact us</h3>
+                <p><strong>Registered Office:</strong><br>
+                2166, Old Malakpet, Uppagumpally,<br>
+                Hyderabad,<br>
+                Telangana-500032</p>
+            </div>
+
+            <div class="footer-call">
+                <h3>Call us</h3>
+                <p>+91 9853462445<br>
+                +91 9000107223</p>
+            </div>
+
+            <div class="footer-email">
+                <h3>Email</h3>
+                <p>afzalmuhammad4@gmail.com</p>
+            </div>
+
+                    <div class="footer-form">
+                        <h3></h3>
+                        <form onsubmit="return sendMail(event)">
+                            <input type="text" placeholder="Name" id="name" required>
+                            <input type="email" placeholder="Email" id="email" required>
+                            <input type="text" placeholder="Subject" id="subject">
+                            <textarea placeholder="Message" id="message"></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2023 AR ENERGY INFRASTRUCTURE- All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Energy Infrastructure - Clients</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF9800;
+            --secondary-orange: #FFA726;
+            --dark-gray: #333;
+            --medium-gray: #555;
+            --light-gray: #f5f5f5;
+            --text-color: #333;
+            --white: #fff;
+            --blue: #1976D2;
+            --green: #4CAF50;
+            --dark-blue-gray: #2c3e50;
+            --header-border: #eee;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--header-border);
+            background-color: var(--white);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-orange);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-orange);
+        }
+
+        /* Clients Hero Section */
+        .clients-hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .clients-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: var(--primary-orange); /* Changed to primary orange */
+            clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .clients-hero-left {
+            flex: 1;
+            min-width: 300px;
+            z-index: 1;
+            padding-right: 40px;
+            position: relative;
+            color: var(--dark-gray);
+            text-align: center;
+        }
+
+        .clients-hero-left h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        .clients-hero-left .star {
+            position: absolute;
+            font-size: 2em;
+            color: #FFD700; /* Gold */
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+
+        .clients-hero-left .star.top-left {
+            top: 10%;
+            left: 15%;
+        }
+
+        .clients-hero-left .circle {
+            position: absolute;
+            background-color: rgba(255, 152, 0, 0.5); /* Darker orange circle on orange background */
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .clients-hero-left .circle.top {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 0;
+        }
+
+        .clients-list-container {
+            flex: 1;
+            min-width: 300px;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            position: relative;
+        }
+
+        .clients-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .clients-list li {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .clients-list li::before {
+            content: '\2022'; /* Bullet point */
+            color: var(--primary-orange);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .clients-hero-right-circle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            opacity: 0.7;
+            top: 80%;
+            right: 5%;
+            z-index: 1;
+            border: 2px solid var(--primary-orange); /* Border for the orange circle */
+            box-sizing: border-box;
+            background-color: transparent; /* Make it an outline circle */
+        }
+        .clients-hero-right-circle::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Footer (reused from previous design, slightly adapted) */
+        footer {
+            background-color: var(--dark-blue-gray);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 15px;
+        }
+
+        .footer-logo-section img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-section p {
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-logo-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: var(--primary-orange);
+        }
+
+        .footer-logo-section address {
+            font-style: normal;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3, .footer-call h3, .footer-email h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-contact p, .footer-call p, .footer-email p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact address, .footer-call p, .footer-email p {
+             font-style: normal;
+        }
+
+        .footer-form h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-form h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-form input[type="text"],
+        .footer-form input[type="email"],
+        .footer-form input[type="subject"],
+        .footer-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3f5b73; /* Slightly lighter dark blue-gray */
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-form input::placeholder,
+        .footer-form textarea::placeholder {
+            color: #a0a8b4;
+        }
+
+        .footer-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .footer-form button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-form button:hover {
+            background-color: var(--secondary-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #4a627a;
+            color: #a0a8b4;
+            font-size: 0.85em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .clients-hero {
+                flex-direction: column;
+                padding: 40px 0;
+                min-height: auto;
+            }
+
+            .clients-hero::before {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 100%);
+            }
+
+            .clients-hero-left {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .clients-hero-left h1 {
+                font-size: 2.5em;
+            }
+
+            .clients-list-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .clients-list {
+                text-align: center;
+            }
+            .clients-list li {
+                padding-left: 0;
+            }
+            .clients-list li::before {
+                position: static;
+                margin-right: 5px;
+            }
+
+            .clients-hero-right-circle {
+                right: 50%;
+                transform: translateX(50%);
+                top: auto;
+                bottom: 10%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+                padding: 0;
+            }
+
+            .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after, .footer-form h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Hide navigation for small screens */
+            }
+
+            header {
+                justify-content: center;
+            }
+
+            .clients-hero-left h1 {
+                font-size: 2em;
+            }
+
+            .clients-list li {
+                font-size: 1em;
+            }
+        }
+        html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+    <script src="script.js" ></script>
+    <script>
+        function showAlert() {
+        alert("Thank you! Your message has been sent successfully.");
+        return true; // allow form submission
+        }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "HgYTSXwCZSRLWZrOR",
+      });
+   })();
+</script>
+</head>
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="./home_page/LOGO.png" alt="AR Energy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="About-us.html">About Us</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="#" class="active">Clients</a></li>
+                <li><a href="index.html#partners">Partners</a></li>
+                <li><a href="Contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="clients-hero">
+            <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; position: relative; z-index: 1;">
+                <div class="clients-hero-left">
+                    <span class="star top-left">&#9733;</span>
+                    <div class="circle top"></div>
+                    <h1>Clients</h1>
+                </div>
+                <div class="clients-list-container">
+                    <ul class="clients-list">
+                        <li>SESHHA SURIYA GREENS</li>
+                        <li>INFINITIHOMES</li>
+                        <li>ATKINSONSCHOOL</li>
+                        <li>SVC HIGH SCHOOL</li>
+                        <li>SAI DREAMCASTLE</li>
+                        <li>OORJITA ISTANA</li>
+                        <li>SRR NURSING HOME</li>
+                        <li>HYD. GYMKHANA</li>
+                    </ul>
+                    <ul class="clients-list">
+                        <li>ESMERALDA FORTUNE</li>
+                        <li>COUNTRY SIDE VILLA</li>
+                        <li>MAJFAIR</li>
+                        <li>LEGEND CHIMES</li>
+                        <li>JJ HOSPITALS</li>
+                        <li>MUPPA AARADHYA</li>
+                        <li>MJK SPINNING</li>
+                        <li>ASHOKAALA MAISON</li>
+                    </ul>
+                    <div class="clients-hero-right-circle"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo-section">
+                <img src="./home_page/LOGO.png" alt="AR Energy Infrastructure Logo">
+                <p>"Ready to move from ambition to action? Join us in transforming how we live. Together, we don't just light up streets – we illuminate entire communities."</p>
+                <h4>Branch Office-1</h4>
+                <address>
+                    6-44-1, Laxmi nagar,<br>
+                    Anantapur AP-515001
+                </address>
+                <br>
+                <h4>Branch Office-2</h4>
+                <address>
+                    23-453, Near TO RTC BUS STAND Sai<br>
+                    Nagar Dharmavaram-515671
+                </address>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact us</h3>
+                <p><strong>Registered Office:</strong><br>
+                2166, Old Mig BHEL, Lingampally,<br>
+                Hyderabad,<br>
+                Telangana-502032</p>
+            </div>
+
+            <div class="footer-call">
+                <h3>Call us</h3>
+                <p>+91 9885402445<br>
+                +91 9989107223</p>
+            </div>
+
+            <div class="footer-email">
+                <h3>Email</h3>
+                <p>afzalmuhammad4@gmail.com</p>
+            </div>
+
+            <div class="footer-form">
+                <h3></h3>
+                <form  onsubmit="return showAlert()">
+                    <input type="text" placeholder="Name" id="name" required>
+                    <input type="email" placeholder="Email" id="email" required >
+                    <input type="text" placeholder="Subject" id="subject">
+                    <textarea placeholder="Message" id="message"></textarea>
+                    <button type="submit" onclick="sendMail()">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2023 AR ENERGY INFRASTRUCTURE- All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
