@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Energy Infrastructure - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF9800;
+            --secondary-orange: #FFA726;
+            --dark-gray: #333;
+            --medium-gray: #555;
+            --light-gray: #f5f5f5;
+            --text-color: #333;
+            --white: #fff;
+            --blue: #1976D2;
+            --green: #4CAF50;
+            --dark-blue-gray: #2c3e50;
+            --header-border: #eee;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--header-border);
+            background-color: var(--white);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-orange);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-orange);
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 40px 0 60px;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .page-title h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+
+        /* Our Story Section */
+        .our-story {
+            padding: 60px 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .our-story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: var(--light-gray);
+            clip-path: polygon(100% 0, 0 0, 25% 100%, 100% 100%);
+            z-index: 0;
+        }
+
+        .our-story .content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .our-story h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+
+        .our-story p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+
+        .our-story .star-icon {
+            position: absolute;
+            font-size: 2em;
+            color: #FFD700;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        .our-story .star-icon.top-left { top: 10%; left: 5%; transform: rotate(-15deg); }
+        .our-story .star-icon.bottom-right { bottom: 15%; right: 10%; transform: rotate(25deg); }
+
+        .our-story .orange-circle {
+            position: absolute;
+            background-color: rgba(255, 152, 0, 0.3);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        .our-story .orange-circle.top-right { width: 60px; height: 60px; top: 5%; right: 5%; }
+        .our-story .orange-circle.middle-right { width: 40px; height: 40px; top: 40%; right: 0; background-color: rgba(255, 152, 0, 0.5); }
+
+
+        /* VMM Section */
+        .vmm-section {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .vmm-section .star-icon {
+            position: absolute;
+            font-size: 2em;
+            color: #FFD700;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        .vmm-section .star-icon.top-right { top: 10%; right: 10%; transform: rotate(-15deg); }
+        .vmm-section .star-icon.bottom-left { bottom: 10%; left: 10%; transform: rotate(25deg); }
+
+
+        .vmm-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .vmm-card {
+            background-color: var(--dark-blue-gray);
+            color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 280px;
+            text-align: left;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .vmm-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: var(--primary-orange);
+            border-bottom: 2px solid var(--primary-orange);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .vmm-card p {
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Our Team Section */
+        .our-team {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .our-team h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-gray);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .our-team h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .team-members {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--medium-gray);
+        }
+
+        .team-member {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+            line-height: 1.7;
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .team-member p strong {
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .team-member .role {
+            color: var(--primary-orange);
+            font-weight: 500;
+        }
+
+
+        /* Footer (reused from previous design, slightly adapted) */
+        footer {
+            background-color: var(--dark-blue-gray);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 15px;
+        }
+
+        .footer-logo-section img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-section p {
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-logo-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: var(--primary-orange);
+        }
+
+        .footer-logo-section address {
+            font-style: normal;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3, .footer-call h3, .footer-email h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-contact p, .footer-call p, .footer-email p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact address, .footer-call p, .footer-email p {
+             font-style: normal;
+        }
+
+        .footer-form h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-form h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-form input[type="text"],
+        .footer-form input[type="email"],
+        .footer-form input[type="subject"],
+        .footer-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3f5b73; /* Slightly lighter dark blue-gray */
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-form input::placeholder,
+        .footer-form textarea::placeholder {
+            color: #a0a8b4;
+        }
+
+        .footer-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .footer-form button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-form button:hover {
+            background-color: var(--secondary-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #4a627a;
+            color: #a0a8b4;
+            font-size: 0.85em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .our-story::before {
+                width: 100%;
+                clip-path: polygon(100% 0, 0 0, 0 50%, 100% 100%);
+            }
+
+            .vmm-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .vmm-card {
+                max-width: 90%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+                padding: 0;
+            }
+
+            .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after, .footer-form h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Hide navigation for small screens */
+            }
+
+            header {
+                justify-content: center;
+            }
+
+            .page-title h1 {
+                font-size: 2em;
+            }
+
+            .our-story h2, .our-team h2 {
+                font-size: 1.8em;
+            }
+
+            .our-story p {
+                font-size: 0.95em;
+                padding: 0 15px;
+            }
+
+            .team-members {
+                padding: 0 15px;
+            }
+        }
+        html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+
+    <script src="script.js" ></script>
+   <script>
+        function showAlert() {
+        alert("Thank you! Your message has been sent successfully.");
+        return true; // allow form submission
+        }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "HgYTSXwCZSRLWZrOR",
+      });
+   })();
+</script>
+</head>
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="./aboutus/LOGO.png" alt="AR Energy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="#" class="active">About Us</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Clients.html">Clients</a></li>
+                <li><a href="index.html#partners">Partners</a></li>
+                <li><a href="Contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <h1>About Us</h1>
+        </section>
+
+        <section class="our-story">
+            <div class="container content">
+                <span class="star-icon top-left">&#9733;</span>
+                <div class="orange-circle top-right"></div>
+                <h2>OUR STORY</h2>
+                <p>AREI one of the top players in the Solar sector in Hyderabad, striving diligently to utilize natural resources (solar energy in our case) for the betterment of the nation.</p>
+                <p>Solar energy is the naturally available source of energy, continuously provided by the Sun. It is then vital non-conventional source of energy and a non-polluting one that helps in creating a greenhouse effect.</p>
+                <p>Our Journey in Solar Paneling commenced in the year 2014 and our ardent efforts at par excellence have now acknowledged us as one of the top companies in Hyderabad in the specific sector.</p>
+                <p>Typically our solar panel would last for more than 30 years, substantially reducing global warming. This works towards saving electricity costs as well</p>
+                <div class="orange-circle middle-right"></div>
+                <span class="star-icon bottom-right">&#9733;</span>
+            </div>
+        </section>
+
+        <section class="vmm-section">
+            <span class="star-icon top-right">&#9733;</span>
+            <div class="container">
+                <div class="vmm-cards">
+                    <div class="vmm-card">
+                        <h3>VISION</h3>
+                        <p>To help the planet live and thrive through sustainable and clean energy solutions.</p>
+                    </div>
+                    <div class="vmm-card">
+                        <h3>Advantage</h3>
+                        <p>Our robust execution and the ability to offer innovative solar energy solutions ensures that we provide solutions cost-effectively.</p>
+                    </div>
+                    <div class="vmm-card">
+                        <h3>Mission</h3>
+                        <p>To install 100 Mega Watts solar energy Plants and impact 1 crore individuals by 2030.</p>
+                    </div>
+                    <div class="vmm-card">
+                        <h3>Project Execution</h3>
+                        <p>Thorough planning and perfect co-ordination is our key to efficient and end results.</p>
+                    </div>
+                </div>
+            </div>
+            <span class="star-icon bottom-left">&#9733;</span>
+        </section>
+
+        <section class="our-team">
+            <div class="container">
+                <h2>Our Team</h2>
+                <div class="team-members">
+                    <div class="team-member">
+                        <p><strong>AREI</strong> is a renowned name in the Solar industry with highly qualified and experienced team. We have rich experience in commissioning roof top and commercial projects ranging from 0.5 KW to any capacity. The Company offers complete turnkey solutions to offset the energy needs with zero upfront investment, reducing power bills and maximize the savings. With our rich experience in rooftop EPC business, AREI is your trusted partner for any of your solar needs.</p>
+                    </div>
+                    <div class="team-member">
+                        <p><strong>Established on 17thAugust 2020as Partnership Firm</strong></p>
+                    </div>
+                    <div class="team-member">
+                        <p><strong>Mr. AFZAL (Consulting MD)</strong> holds a Graduate degree in ELECTRICAL AND ELECTRONICS Engineering. He has a rich experience of 10+ years in the Marketing sector. Before he ventured on his own, he was handling the operations at S C UBE ENERGY AND INFRA PVT LTD., as the PM.</p>
+                    </div>
+                    <div class="team-member">
+                        <p><strong>Mrs. AKIFA (Consulting AGM)</strong> completed her Graduation in Master of science biotechnology gold medalist. Though she is a Lecturer by profession, she joined hands with her spouse to support his noble initative in making the world a greener, cleaner and healthier place.</p>
+                    </div>
+                    <div class="team-member">
+                        <p>The entire efforts to make the challenging task a huge success was shouldered by them. AREI has been accredited by REC (Indian Green Building Council) and are certified as a professional system integrator by REC for 2020-21.</p>
+                    </div>
+                    <div class="team-member">
+                        <p>Adding more power and energy to the team are: <strong class="role">Mr. SYED MOOSA (Consulting PM).</strong></p>
+                    </div>
+                     <div class="team-member">
+                        <p><strong class="role">Mr. HANUMANTH REDDY (Consulting BD).</strong></p>
+                    </div>
+                    <div class="team-member">
+                        <p><strong>Mr. WAHEED. CA (Consulting CFO)</strong> and <strong class="role">Adv. VERA (Legal Consultant).</strong><br>
+                        A strong core team that has a clear vision and a challenging mission to bring a positive change in the world is on a journey to perfection and Victory.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo-section">
+                <img src="./aboutus/LOGO.png" alt="AR Energy Infrastructure Logo">
+                <p>"Ready to move from ambition to action? Join us in transforming how we live. Let's not just light up streets, we illuminate entire communities."</p>
+                <h4>Branch Office-1</h4>
+                <address>
+                    6-44-1, Laxmi nagar,<br>
+                    Anantapur AP-515001
+                </address>
+                <br>
+                <h4>Branch Office-2</h4>
+                <address>
+                    23-453, Near TO RTC BUS STAND Sai<br>
+                    Nagar Dharmavaram-515671
+                </address>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact us</h3>
+                <p><strong>Registered Office:</strong><br>
+                2166, Old Malakpet, Uppagumpally,<br>
+                Hyderabad,<br>
+                Telangana-500032</p>
+            </div>
+
+            <div class="footer-call">
+                <h3>Call us</h3>
+                <p>+91 9853462445<br>
+                +91 9000107223</p>
+            </div>
+
+            <div class="footer-email">
+                <h3>Email</h3>
+                <p>afzalmuhammad4@gmail.com</p>
+            </div>
+
+            <div class="footer-form">
+                <h3></h3>
+                <form onsubmit="return showAlert()">
+                    <input type="text" placeholder="Name" id="name" required>
+                    <input type="email" placeholder="Email" id="email" required >
+                    <input type="text" placeholder="Subject" id="subject">
+                    <textarea placeholder="Message" id="message
+                    "></textarea>
+                    <button type="submit" onclick="sendMail()">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2023 AR ENERGY INFRASTRUCTURE- All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

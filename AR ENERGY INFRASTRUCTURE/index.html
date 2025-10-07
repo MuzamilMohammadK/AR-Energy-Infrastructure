@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Energy Infrastructure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF9800;
+            --secondary-orange: #FFA726;
+            --dark-gray: #333;
+            --medium-gray: #555;
+            --light-gray: #f5f5f5;
+            --text-color: #333;
+            --white: #fff;
+            --blue: #1976D2;
+            --green: #4CAF50;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            background-color: var(--white);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-orange);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 60px 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: var(--light-gray);
+            clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .hero-left, .hero-right {
+            flex: 1;
+            min-width: 300px;
+            z-index: 1;
+        }
+
+        .hero-left {
+            padding-right: 40px;
+            position: relative;
+            color: var(--dark-gray);
+        }
+
+        .hero-left h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        .hero-left h1 span {
+            color: var(--primary-orange);
+        }
+
+        .hero-left p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-top: 20px;
+            max-width: 450px;
+        }
+
+        .hero-left .star {
+            position: absolute;
+            font-size: 2em;
+            color: #FFD700; /* Gold */
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+
+        .hero-left .star.top-left {
+            top: 10%;
+            left: 5%;
+        }
+
+        .hero-left .star.bottom-right {
+            bottom: 20%;
+            right: 15%;
+            font-size: 1.5em;
+        }
+
+        .hero-left .circle {
+            position: absolute;
+            background-color: rgba(255, 152, 0, 0.3);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .hero-left .circle.top {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 0;
+        }
+
+        .hero-left .circle.bottom {
+            width: 50px;
+            height: 50px;
+            bottom: 25%;
+            right: 0;
+            background-color: rgba(255, 152, 0, 0.5);
+        }
+
+
+        .hero-right {
+            text-align: center;
+        }
+
+        .hero-right img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .services::before, .services::after {
+            content: '\2606'; /* Star character */
+            position: absolute;
+            font-size: 1.5em;
+            color: #FFD700;
+            opacity: 0.7;
+        }
+
+        .services::before {
+            top: 10%;
+            right: 10%;
+        }
+
+        .services::after {
+            bottom: 5%;
+            left: 15%;
+        }
+
+        .services h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .services h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .service-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            max-width: 350px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card .icon-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .service-card .icon-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .service-card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: var(--medium-gray);
+        }
+
+        /* About Section (below services) */
+        .about-us {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .about-us p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .partners h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .partners h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            align-items: center;
+            justify-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .partner-logo img {
+            max-width: 100px;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50; /* Dark blue-gray */
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 15px;
+        }
+
+        .footer-logo-section img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-section p {
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-logo-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: var(--primary-orange);
+        }
+
+        .footer-logo-section address {
+            font-style: normal;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3, .footer-call h3, .footer-email h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-contact p, .footer-call p, .footer-email p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact address, .footer-call p, .footer-email p {
+             font-style: normal;
+        }
+
+        .footer-form h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+            position: relative;
+        }
+
+        .footer-form h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-form input[type="text"],
+        .footer-form input[type="email"],
+        .footer-form input[type="subject"],
+        .footer-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3f5b73; /* Slightly lighter dark blue-gray */
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-form input::placeholder,
+        .footer-form textarea::placeholder {
+            color: #a0a8b4;
+        }
+
+        .footer-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .footer-form button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-form button:hover {
+            background-color: var(--secondary-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #4a627a;
+            color: #a0a8b4;
+            font-size: 0.85em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 0;
+            }
+
+            .hero::before {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 100%);
+            }
+
+            .hero-left {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .hero-left h1 {
+                font-size: 2em;
+            }
+
+            .hero-right img {
+                max-width: 80%;
+            }
+
+            .service-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-logo-section, .footer-contact, .footer-call, .footer-email, .footer-form {
+                padding: 0;
+            }
+
+            .footer-contact h3::after, .footer-call h3::after, .footer-email h3::after, .footer-form h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Hide navigation for small screens, usually a hamburger menu would be here */
+            }
+
+            header {
+                justify-content: center;
+            }
+
+            .hero-left h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-left p {
+                font-size: 1em;
+            }
+
+            .services h2, .partners h2 {
+                font-size: 1.8em;
+            }
+
+            .service-card {
+                max-width: 90%;
+            }
+
+            .about-us p {
+                font-size: 1em;
+                padding: 0 15px;
+            }
+
+            .partner-grid {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+            }
+    </style>
+
+    <script src="script.js" ></script>
+    <script>
+        function showAlert() {
+        alert("Thank you! Your message has been sent successfully.");
+        return true; // allow form submission
+        }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+     <script type="text/javascript">
+    (function(){
+        // Initialize EmailJS with your public key (string)
+        if (window.emailjs && typeof emailjs.init === 'function') {
+            emailjs.init('HgYTSXwCZSRLWZrOR');
+        }
+    })();
+</script>
+</head>
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="./home_page/LOGO.png" alt="AR Energy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home Page</a></li>
+                <li><a href="About-us.html">About Us</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Clients.html">Clients</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="Contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; position: relative; z-index: 1;">
+                <div class="hero-left">
+                    <span class="star top-left">&#9733;</span>
+                    <div class="circle top"></div>
+                    <h1>"Stop waiting for change. Be the <span>change</span> that powers your community. Go solar."</h1>
+                    <p>"The future isn't just bright, it's solar-powered. Join <span>AR ENERGY INFRASTRUCTURE</span> to build a cleaner, more sustainable infrastructure revolution."</p>
+                    <span class="star bottom-right">&#9733;</span>
+                    <div class="circle bottom"></div>
+                </div>
+                <div class="hero-right">
+                    <img src="./home_page/solar power.png" alt="Solar Power Solutions">
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2>Services We Provide</h2>
+                <div class="service-cards">
+                    <div class="service-card">
+                        <div class="icon-placeholder">
+                            <img src="./home_page/SRT 1.png" alt="Solar Rooftop System">
+                        </div>
+                        <h3>Solar Rooftop System</h3>
+                        <p>We undertake turnkey projects in this category. Right from conceptualization to execution and beyond also. We offer 5 KW - 300KW Solar Power Roof Top System.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-placeholder">
+                            <img src="./home_page/HW 1.png" alt="Highway Lighting">
+                        </div>
+                        <h3>Highway Lighting</h3>
+                        <p>Proper city lighting not only makes it safer for pedestrians and road users, but it's necessity. With a formidable amount of experience, AR Energy offers bespoke, end-to-end solutions for illuminating streets and highways of all sizes and making it more livable.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-placeholder">
+                            <img src="./home_page/SSL 1.png" alt="Solar Street Lights">
+                        </div>
+                        <h3>Solar Street Lights</h3>
+                        <p>In this category we specialize in the supply of Solar panels, Commercial Streetlights as well as Flood lights.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us">
+            <div class="container">
+                <p>Solar energy is transforming public infrastructure, with autonomous solar street lights and highway lighting becoming a cornerstone of sustainable development. These innovations offer a myriad of advantages including a drastic reduction in energy consumption and associated economic benefits, eliminating energy bills, reducing carbon emissions, and simplifying installation in remote areas. Furthermore, modern solar lights are equipped with smart capabilities, including dimming functions, motion sensors, and remote monitoring, and the convenience of real time data like air quality and traffic flow, making them a vital, future-proof solution for sustainable urban environments.</p>
+            </div>
+        </section>
+
+        <section class="partners" id="partners">
+            <div class="container">
+                <h2>Partners</h2>
+                <div class="partner-grid">
+                    <div class="partner-logo"><img src="./home_page/image 10.png" alt="Trina Solar"></div>
+                    <div class="partner-logo"><img src="./home_page/image 11.png" alt="TATA Power Solar"></div>
+                    <div class="partner-logo"><img src="./home_page/image 12.png" alt="Waree"></div>
+                    <div class="partner-logo"><img src="./home_page/image 13.png" alt="Adani Solar"></div>
+                    <div class="partner-logo"><img src="./home_page/image 2.png" alt="RenewSys"></div>
+                    <div class="partner-logo"><img src="./home_page/image 3.png" alt="Havells"></div>
+                    <div class="partner-logo"><img src="./home_page/image 5.png" alt="Bajaj"></div>
+                    <div class="partner-logo"><img src="./home_page/image 6.png" alt="Surya"></div>
+                        <div class="partner-logo"><img src="./home_page/image 7.png" alt="Solis"></div>
+                    <div class="partner-logo"><img src="./home_page/image 8.png" alt="RuCold"></div>
+                    <div class="partner-logo"><img src="./home_page/image 10.png" alt="Ava Energy"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo-section">
+                <img src="./home_page/LOGO.png" alt="AR Energy Infrastructure Logo">
+                <p>"Ready to move from ambition to action? Join us in transforming how we live. Let's not just light up streets, we illuminate entire communities."</p>
+                <h4>Head Office-1</h4>
+                <address>
+                    6-44-1, Laxmi nagar,<br>
+                    Anantapur AP, 515001
+                </address>
+                <br>
+                <h4>Branch Office-2</h4>
+                <address>
+                    23-453, Near KAKATIYA STAND SAI<br>
+                    Nagar Dharmavaram-515671
+                </address>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact us</h3>
+                <p><strong>Registered Office:</strong><br>
+                2166, Old Malakpet, Uppagumpally,<br>
+                Hyderabad,<br>
+                Telangana-500032</p>
+            </div>
+
+            <div class="footer-call">
+                <h3>Call us</h3>
+                <p>+91 9853462445<br>
+                +91 9000107223</p>
+            </div>
+
+            <div class="footer-email">
+                <h3>Email</h3>
+                <p>arezabhumanshi@gmial.com</p>
+            </div>
+
+            <div class="footer-form">
+                <h3></h3>
+                <form onsubmit="return sendMail(event)">
+                    <input type="text" name="name" placeholder="Name" id="name" required>
+                    <input type="email" name="email" placeholder="Email" id="email" required>
+                    <input type="text" name="subject" placeholder="Subject" id="subject">
+                    <textarea name="message" placeholder="Message" id="message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2023 AR ENERGY INFRASTRUCTURE- All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
